@@ -6,7 +6,7 @@ from sys import exit
 
 #initializing pygame
 pg.init()
-#tkinter 설정
+#tkinter setting
 Tk().wm_withdraw()
 
 
