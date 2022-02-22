@@ -4,7 +4,7 @@ from tkinter import messagebox, Tk
 import os
 from sys import exit
 
-#파이게임 초기화
+#initializing pygame
 pg.init()
 #tkinter 설정
 Tk().wm_withdraw()
@@ -21,7 +21,7 @@ def resource_path(relative_path):
 
 
 
-#기본 변수
+#Fundamental Variables
 board_size = 16
 cell_size = 24
 partition_size = 2
@@ -34,14 +34,14 @@ FPS = 30
 CELL_FONT = pg.font.SysFont("arial", 20, True, False)
 SYS_FONT = pg.font.SysFont("arial", 26, True, False)
 
-#창 설정
+#Window Setting
 WINDOW = pg.display
 WINDOW.set_caption(CAPTION)
 WINDOW.set_icon(ICON)
 SCREEN = WINDOW.set_mode((WIDTH, HEIGHT))
 pg.time.Clock().tick(FPS)
 
-#기본 색
+#Basic colors
 BLACK   = (  0,   0,   0)
 RED     = (255,   0,   0)
 GREEN   = (  0, 255,   0)
@@ -51,7 +51,7 @@ MAGENTA = (255,   0, 255)
 CYAN    = (  0, 255, 255)
 WHITE   = (255, 255, 255)
 
-#확장 색
+#Extended colors
 DARK_GRAY = (127, 127, 127)
 LIGHT_GRAY = (195, 195, 195)
 LIGHT_BLUE = (127, 127, 255)
@@ -62,7 +62,7 @@ ORANGE = (255, 165, 0)
 
 
 
-#전역 변수
+#global variables
 max_mine = 40
 num_color = [LIGHT_GRAY, LIGHT_BLUE, LIGHT_GREEN, RED, BLUE, BROWN, GREEN, VIOLET, ORANGE]
 mine_image = pg.transform.scale(pg.image.load(resource_path("image/mine.png")), [cell_size, cell_size])
@@ -74,7 +74,7 @@ dft = False
 
 
 
-#클래스
+#Classes
 class board:
     def __init__(self):
         self.content = [[cell(self, i, j) for i in range(board_size)] for j in range(board_size)]
@@ -178,7 +178,7 @@ class cell:
 
 
 
-#함수
+#Functions
 def fill_background():
     SCREEN.fill(DARK_GRAY)
 
@@ -239,12 +239,12 @@ def victory():
 
 
 
-#게임 초기화
+#Game Initialization
 game_board = board()
 
 
 
-#실행부
+#Main Loop
 RUNNING = True
 while RUNNING:
     fill_background()
@@ -257,7 +257,7 @@ while RUNNING:
         else:
             exit(0)
 
-    elif dft == True: #왜 이렇게 되지?
+    elif dft == True:
         dft = 2
 
     elif dft == 2:
